@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>FotoGallery</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield :title %>FotoLib</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <%= render 'layouts/header' %>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <% flash.each do |type, message| %>
+          <div class="alert alert-info fade-in">
+            <button class="close" data-dismiss="alert">&times;</button>
+            <%= message %>
+          </div>
+      <% end %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+<section>
+  <%= yield %>
+</section>
 
-<%= yield %>
+<footer class="footer">
+  <%= render 'layouts/footer' %>
+</footer>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        <%= yield :scripts %>
+    });
+</script>
 </body>
 </html>
