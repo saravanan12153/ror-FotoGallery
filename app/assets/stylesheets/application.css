@@ -12,5 +12,6 @@
  *
  *= require normalize-rails
  *= require_tree .
+ *= require font-awesome
  *= require_self
  */
