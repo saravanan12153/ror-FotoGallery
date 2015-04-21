@@ -11,6 +11,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    authorize! :read, @gallery
     @images = @gallery.images.all
   end
 
@@ -21,6 +22,7 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1/edit
   def edit
+    authorize! :update, @gallery
   end
 
   # POST /galleries
@@ -43,6 +45,7 @@ class GalleriesController < ApplicationController
   # PATCH/PUT /galleries/1
   # PATCH/PUT /galleries/1.json
   def update
+    authorize! :update, @gallery
     respond_to do |format|
       if @gallery.update(gallery_params)
         format.html { redirect_to @gallery, notice: 'Gallery was successfully updated.' }
@@ -57,6 +60,7 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   # DELETE /galleries/1.json
   def destroy
+    authorize! :destroy, @gallery
     @gallery.destroy
     respond_to do |format|
       format.html { redirect_to galleries_url, notice: 'Gallery was successfully destroyed.' }

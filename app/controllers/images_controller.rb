@@ -12,6 +12,7 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    authorize! :read, @image
   end
 
   # GET /images/new
@@ -41,6 +42,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
+    authorize! :update, @image
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
@@ -55,6 +57,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+    authorize! :destroy, @image
     @gallery = Gallery.find(params[:gallery_id])
     @image = @gallery.images.find(params[:id]).destroy
 
