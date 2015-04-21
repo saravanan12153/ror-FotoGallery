@@ -1,22 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, @gallery.name+' | ' %>
+<div class="container">
+  <h2 class="text-center"><%= link_to '<i class="fa fa-chevron-left"></i> Back'.html_safe, galleries_path, class: 'btn btn-default pull-left' %><%= @gallery.name %></h2>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @gallery.name %>
-</p>
-
+<div class="container-fluid">
 <%= form_for([@gallery, @gallery.images.build], html: { multipart: true, class: "dropzone"}) do |f| %>
     <div class="fallback">
       <%= f.file_field :avatar %><br>
       <%= f.submit "Upload my Avatar" %>
     </div>
 <% end %>
-
-
-<div class="show">
-  <%= render "show" %>
 </div>
 
-<br
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', galleries_path %>
+
+<div class="show container">
+  <%= render "show" %>
+</div>

@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Avatar:</strong>
-  <%= image_tag @image.avatar.url(:original), alt: @image.avatar.url(:original) %>
-</p>
-
-<%= link_to "Back", gallery_path(@image.gallery) %>
-<% if @image.next %>
-<%= link_to "Next", gallery_image_path(@image.gallery,@image.next) %>
-<% end %>
-<% if @image.prev %>
-    <%= link_to "Previous", gallery_image_path(@image.gallery,@image.prev) %>
-<% end %>
+<% content_for :title, 'Image '+ @image.id.to_s + ' | ' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Image <%= @image.id %><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, gallery_image_path(@image.gallery, @image), method: :delete, class: 'pull-right', data: { confirm: "Are you sure?" } %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              <%= link_to '<i class="fa fa-chevron-left"></i> '.html_safe+@image.gallery.name, @image.gallery, class: 'btn btn-default' %>
+              <%= link_to @image.avatar.url(:original) do %>
+                  <%= image_tag @image.avatar.url(:original), class: 'img-responsive' %>
+              <% end %>
+            </div>
+            <div class="col-md-4">
+              <% if @image.next %>
+                  <%= link_to 'Next <i class="fa fa-chevron-right"></i>'.html_safe, gallery_image_path(@image.gallery,@image.next), class: 'btn btn-primary pull-right' %>
+              <% end %>
+              <% if @image.prev %>
+                  <%= link_to '<i class="fa fa-chevron-left"></i> Previous'.html_safe, gallery_image_path(@image.gallery,@image.prev), class: 'btn btn-primary pull-left' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
