@@ -9,14 +9,24 @@
         <thead>
         <tr>
           <th>Name</th>
-          <th></th>
-          <th></th>
+          <th class="text-right">Size (MBs)</th>
+          <th class="text-right">Images Count</th>
+          <th class="text-right"></th>
+          <th class="text-right"></th>
         </tr>
         </thead>
         <tbody>
         <% @galleries.each do |gallery| %>
+        <% total_size = 0 %>
+        <% gallery.images.all.each do |image| %>
+            <% total_size += image.avatar_file_size %>
+        <% end %>
+        <% total_size /= 1000000.0 %>
+        <% total_count = gallery.images.all.count %>
             <tr>
               <td><%= link_to gallery.name, gallery %></td>
+              <td class="text-right"><%= '%.1f'%total_size %></td>
+              <td class="text-right"><%= total_count %></td>
               <td class="text-right"><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
               <td class="text-right"><%= link_to 'Delete', gallery, method: :delete, data: { confirm: 'All Images will also be deleted. Are you sure?' } %></td>
             </tr>
