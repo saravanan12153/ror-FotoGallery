@@ -13,6 +13,10 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
     authorize! :read, @image
+    bitly = Shortly::Clients::Bitly
+    bitly.apiKey  = ENV['BITLY_API_KEY_ID']
+    bitly.login   = ENV['BITLY_LOGIN_USERNAME']
+    @url = bitly.shorten(@image.avatar.url(:original)).url
   end
 
   # GET /images/new
