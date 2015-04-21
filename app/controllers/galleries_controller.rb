@@ -11,6 +11,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    @images = @gallery.images.all
   end
 
   # GET /galleries/new
@@ -25,7 +26,8 @@ class GalleriesController < ApplicationController
   # POST /galleries
   # POST /galleries.json
   def create
-    @gallery = current_user.galleries.new(gallery_params)
+    @user = current_user
+    @gallery = @user.galleries.build(gallery_params)
 
     respond_to do |format|
       if @gallery.save

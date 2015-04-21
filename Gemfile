@@ -36,6 +36,8 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem "font-awesome-rails"
 gem 'simple_form'
 gem 'devise'
+gem 'paperclip'
+gem 'dropzonejs-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

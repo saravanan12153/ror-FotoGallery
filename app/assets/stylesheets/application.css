@@ -12,6 +12,7 @@
  *
  *= require normalize-rails
  *= require_tree .
+ *= require dropzone/dropzone
  *= require font-awesome
  *= require_self
  */

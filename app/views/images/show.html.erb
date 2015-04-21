@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= image_tag @image.avatar.url(:original), alt: @image.avatar.url(:original) %>
+</p>
+
+<%= link_to "Back", gallery_path(@image.gallery) %>
+<% if @image.next %>
+<%= link_to "Next", gallery_image_path(@image.gallery,@image.next) %>
+<% end %>
+<% if @image.prev %>
+    <%= link_to "Previous", gallery_image_path(@image.gallery,@image.prev) %>
+<% end %>

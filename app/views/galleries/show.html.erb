@@ -5,5 +5,18 @@
   <%= @gallery.name %>
 </p>
 
+<%= form_for([@gallery, @gallery.images.build], html: { multipart: true, class: "dropzone"}) do |f| %>
+    <div class="fallback">
+      <%= f.file_field :avatar %><br>
+      <%= f.submit "Upload my Avatar" %>
+    </div>
+<% end %>
+
+
+<div class="show">
+  <%= render "show" %>
+</div>
+
+<br
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>

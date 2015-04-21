@@ -13,6 +13,8 @@
 /tmp
 .idea/
 .env
+public/assets
+public/system
 
 
 
