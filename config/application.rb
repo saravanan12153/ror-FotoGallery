@@ -40,5 +40,6 @@ module FotoGallery
         },
         fog_directory: ENV['GCS_BUCKET'],
     }
+    config.active_job.queue_adapter = :delayed_job
   end
 end

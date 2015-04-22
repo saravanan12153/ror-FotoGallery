@@ -39,6 +39,8 @@ gem 'dropzonejs-rails'
 gem 'cancan'
 gem 'fog'
 gem 'shortly'
+gem 'delayed_job_active_record'
+gem 'workless'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
