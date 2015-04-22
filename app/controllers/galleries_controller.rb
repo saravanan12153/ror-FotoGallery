@@ -12,7 +12,10 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     authorize! :read, @gallery
-    @images = @gallery.images.all
+    images = @gallery.images.all.count/3
+    @images1 = @gallery.images.limit(images)
+    @images2 = @gallery.images.offset(images).limit(images)
+    @images3 = @gallery.images.offset(images+images)
   end
 
   # GET /galleries/new

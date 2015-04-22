@@ -1,5 +1,23 @@
-<div class="list-group">
-<% @images.each do |image| %>
-    <%= link_to 'Image '+image.id.to_s,gallery_image_path(:gallery_id => @gallery.id, :id => image ), class: 'list-group-item' %>
-<% end %>
+<div class="row">
+  <div class="col-md-4 col-sm-4">
+    <div class="list-group">
+      <% @images1.each do |image| %>
+          <%= link_to 'Image '+image.id.to_s,gallery_image_path(:gallery_id => @gallery.id, :id => image ), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-4">
+    <div class="list-group">
+      <% @images2.each do |image| %>
+          <%= link_to 'Image '+image.id.to_s,gallery_image_path(:gallery_id => @gallery.id, :id => image ), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-4">
+    <div class="list-group">
+      <% @images3.each do |image| %>
+          <%= link_to 'Image '+image.id.to_s,gallery_image_path(:gallery_id => @gallery.id, :id => image ), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
 </div>
