@@ -25,9 +25,9 @@ $(window).bind('page:change', function() {
 });
 function initPage() {
     // Page ready code...
-    //$(document).ready(function(){
+    $(document).ready(function(){
         // disable auto discover
-        Dropzone.autoDiscover = false;
+        Dropzone.autoDiscover = true;
 
 
         var dropzone = new Dropzone (".dropzone", {
@@ -40,5 +40,5 @@ function initPage() {
             this.removeFile(file)
             $.getScript("/images")
         })
-    //});
+    });
 }

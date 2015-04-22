@@ -4,15 +4,17 @@
 </div>
 
 <div class="container-fluid">
-<%= form_for([@gallery, @gallery.images.build], html: { multipart: true, class: "dropzone"}) do |f| %>
-    <div class="fallback">
-      <%= f.file_field :avatar %><br>
-      <%= f.submit "Upload my Avatar" %>
-    </div>
-<% end %>
+  <%= form_for([@gallery, @gallery.images.build], html: { multipart: true, class: "dropzone"}) do |f| %>
+      <div class="fallback">
+        <%= f.file_field :avatar %><br>
+        <%= f.submit "Upload my Avatar" %>
+      </div>
+  <% end %>
 </div>
 
 
-<div class="show container">
-  <%= render "show" %>
+<div class="container">
+  <div class="show">
+    <%= render "show" %>
+  </div>
 </div>
